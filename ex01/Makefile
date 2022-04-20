@@ -4,7 +4,7 @@ COPTS	:= -std=c++98 -pedantic-errors #-g -fsanitize=address
 INCLUDE	:= -I src
 
 NAME	:= a.out
-SRCS	:= Bureaucrat.cpp main.cpp
+SRCS	:= Bureaucrat.cpp Form.cpp       main.cpp
 OBJS	:= $(SRCS:%.cpp=%.o)
 SRCS	:= $(addprefix src/, $(SRCS))
 OBJS	:= $(addprefix obj/, $(OBJS))
