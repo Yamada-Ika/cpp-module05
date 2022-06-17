@@ -5,29 +5,29 @@
 #include <exception>
 
 class Bureaucrat {
-  static const int max_grade = 1;
-  static const int min_grade = 150;
-
  private:
+    static const int kMaxGrade = 1;
+    static const int kMinGrade = 150;
     const std::string name_;
     int grade_;
-    bool isGradeTooHigh(void);
-    bool isGradeTooLow(void);
+    bool isGradeTooHigh();
+    bool isGradeTooLow();
 
  public:
+    // Bureaucrat();
     explicit Bureaucrat(const std::string name, int grade);
-    ~Bureaucrat(void);
+    ~Bureaucrat();
     Bureaucrat(const Bureaucrat& other);
     Bureaucrat& operator=(const Bureaucrat& other);
-    const std::string &getName(void) const;
-    int getGrade(void) const;
-    void increGrade(void);
-    void decreGrade(void);
+    const std::string &getName() const;
+    int getGrade() const;
+    void increGrade();
+    void decreGrade();
     class GradeTooHighException : public std::exception {
-      virtual const char* what() const throw();
+        virtual const char* what() const throw();
     };
     class GradeTooLowException : public std::exception {
-      virtual const char* what() const throw();
+        virtual const char* what() const throw();
     };
 };
 

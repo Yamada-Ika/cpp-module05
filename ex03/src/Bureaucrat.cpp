@@ -3,11 +3,11 @@
 #include <iostream>
 
 bool Bureaucrat::isGradeTooHigh(void) {
-  return (grade_ < max_grade);
+  return (grade_ < kMaxGrade);
 }
 
 bool Bureaucrat::isGradeTooLow(void) {
-  return (grade_ > min_grade);
+  return (grade_ > kMinGrade);
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name_(name) ,grade_(grade) {

@@ -2,11 +2,11 @@
 #include <iostream>
 
 bool Form::isGradeTooHigh(int grade) {
-  return (grade < max_grade);
+  return (grade < kMaxGrade);
 }
 
 bool Form::isGradeTooLow(int grade) {
-  return (grade > min_grade);
+  return (grade > kMinGrade);
 }
 
 Form::Form(const std::string name, int grade_to_sign, int grade_to_execute) : name_(name),

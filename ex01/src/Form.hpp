@@ -8,8 +8,8 @@
 class Bureaucrat;
 
 class Form {
-  static const int max_grade = 1;
-  static const int min_grade = 150;
+  static const int kMaxGrade = 1;
+  static const int kMinGrade = 150;
 
  private:
     const std::string name_;
