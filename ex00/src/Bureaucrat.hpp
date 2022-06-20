@@ -16,11 +16,11 @@ class Bureaucrat {
     bool isGradeTooLow();
 
  public:
-    // Bureaucrat();
     explicit Bureaucrat(const std::string& name, int grade);
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat& other);
     Bureaucrat& operator=(const Bureaucrat& other);
+
     const std::string &getName() const;
     int getGrade() const;
     void increGrade();

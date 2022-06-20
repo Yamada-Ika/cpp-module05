@@ -12,10 +12,11 @@ class Form {
     static const int kMaxGrade = 1;
     static const int kMinGrade = 150;
     const std::string name_;
+    bool is_signed_;
     const int grade_to_sign_;
     const int grade_to_execute_;
-    bool is_signed_;
 
+    Form();
     bool isGradeTooHigh(int grade);
     bool isGradeTooLow(int grade);
 
@@ -27,11 +28,17 @@ class Form {
 
     const std::string &getName() const;
     void beSigned(const Bureaucrat& b);
+    int getGradeToSign() const;
+    int getGradeToExec() const;
+    bool getIsSigned() const;
 
     class GradeTooHighException : public std::exception {
         virtual const char* what() const throw();
     };
     class GradeTooLowException : public std::exception {
+        virtual const char* what() const throw();
+    };
+    class AlreadyBeSigedException : public std::exception {
         virtual const char* what() const throw();
     };
 };
