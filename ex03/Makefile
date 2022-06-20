@@ -26,11 +26,19 @@ fclean: clean
 
 re: fclean all
 
-sh: all
-	./a.out -ShrubberyCreationForm
-ro: all
-	./a.out -RobotomyRequestForm
-pr: all
-	./a.out -PresidentialPardonForm
+run: all
+	./a.out
 
-.PHONY: all clean fclean re test
+leak: ## Check memory leak with leaks command
+	@echo '#include <stdio.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <strings.h>\n__attribute__((destructor))\nvoid	destructor(void){char buf[50]; bzero(buf, 50); sprintf(buf, "leaks %d", getpid()); system(buf);}' > src/leak.cpp
+	-c++ -o leak src/*.cpp && ./leak
+	rm -rf ./leak src/leak.cpp
+
+.PHONY: help
+help: ## Print Makefile rules
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: h
+h: help ## Print Makefile rules (shorthand)
+
+.PHONY: all clean fclean re test run
