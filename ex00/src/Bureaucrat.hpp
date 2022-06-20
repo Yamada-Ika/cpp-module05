@@ -10,12 +10,14 @@ class Bureaucrat {
     static const int kMinGrade = 150;
     const std::string name_;
     int grade_;
+
+    Bureaucrat();
     bool isGradeTooHigh();
     bool isGradeTooLow();
 
  public:
     // Bureaucrat();
-    explicit Bureaucrat(const std::string name, int grade);
+    explicit Bureaucrat(const std::string& name, int grade);
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat& other);
     Bureaucrat& operator=(const Bureaucrat& other);

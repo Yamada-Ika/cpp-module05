@@ -9,7 +9,7 @@ bool Bureaucrat::isGradeTooLow() {
     return grade_ > kMinGrade;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : name_(name), grade_(grade) {
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : name_(name), grade_(grade) {
     std::cout << "Bureaucrat default constructor called" << std::endl;
     if (isGradeTooHigh()) {
         throw GradeTooHighException();
@@ -32,7 +32,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     return *this;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : name_(other.name_) {
     std::cout << "Bureaucrat copy constructor called" << std::endl;
     *this = other;
 }

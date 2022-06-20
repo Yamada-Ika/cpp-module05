@@ -15,7 +15,7 @@ class Form {
     const std::string name_;
     const int grade_to_sign_;
     const int grade_to_execute_;
-    bool is_signed;
+    bool is_signed_;
     bool isGradeTooHigh(int grade);
     bool isGradeTooLow(int grade);
 

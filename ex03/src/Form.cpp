@@ -10,7 +10,7 @@ bool Form::isGradeTooLow(int grade) {
 }
 
 Form::Form(const std::string name, int grade_to_sign, int grade_to_execute) : name_(name),
-            grade_to_sign_(grade_to_sign), grade_to_execute_(grade_to_execute), is_signed(false) {
+            grade_to_sign_(grade_to_sign), grade_to_execute_(grade_to_execute), is_signed_(false) {
   std::cout << "Form default constructor called" << std::endl;
   if (isGradeTooHigh(grade_to_sign) || isGradeTooHigh(grade_to_execute)) {
     throw GradeTooHighException();
@@ -27,14 +27,14 @@ Form::~Form(void) {
 Form& Form::operator=(const Form& other) {
   std::cout << "Form assignation operator called" << std::endl;
   if (this != &other) {
-    this->is_signed = other.is_signed;
+    this->is_signed_ = other.is_signed_;
   }
   return *this;
 }
 
 Form::Form(const Form& other) : name_(other.name_),
             grade_to_sign_(other.grade_to_sign_), grade_to_execute_(other.grade_to_execute_),
-            is_signed(other.is_signed) {
+            is_signed_(other.is_signed_) {
   std::cout << "Form copy constructor called" << std::endl;
   *this = other;
 }
@@ -53,14 +53,14 @@ int Form::getGradeToExecute(void) const {
 
 void Form::beSigned(const Bureaucrat& b) {
   if (canSign(b)) {
-    is_signed = true;
+    is_signed_ = true;
     return;
   }
   throw CannotSignedException();
 }
 
 bool Form::getIsSigned(void) const {
-  return is_signed;
+  return is_signed_;
 }
 
 bool Form::canSign(const Bureaucrat& b) const {

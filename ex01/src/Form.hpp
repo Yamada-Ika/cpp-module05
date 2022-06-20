@@ -8,31 +8,31 @@
 class Bureaucrat;
 
 class Form {
-  static const int kMaxGrade = 1;
-  static const int kMinGrade = 150;
-
  private:
+    static const int kMaxGrade = 1;
+    static const int kMinGrade = 150;
     const std::string name_;
     const int grade_to_sign_;
     const int grade_to_execute_;
-    bool is_signed;
+    bool is_signed_;
+
     bool isGradeTooHigh(int grade);
     bool isGradeTooLow(int grade);
 
  public:
     explicit Form(const std::string name, int grade_to_sign, int grade_to_execute);
-    ~Form(void);
+    ~Form();
     Form(const Form& other);
     Form& operator=(const Form& other);
 
-    const std::string &getName(void) const;
+    const std::string &getName() const;
     void beSigned(const Bureaucrat& b);
 
     class GradeTooHighException : public std::exception {
-      virtual const char* what() const throw();
+        virtual const char* what() const throw();
     };
     class GradeTooLowException : public std::exception {
-      virtual const char* what() const throw();
+        virtual const char* what() const throw();
     };
 };
 
